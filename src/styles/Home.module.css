@@ -16,8 +16,8 @@
   float: right;
 }
 
-@midia only screen and (max-display-width: 700px) {
-  .menu  ul {padding: 0;}
+@media only screen and (max-width: 700px) {
+  .menu > ul {padding: 0;}
 }
 
 .menu  ul  li  a {
@@ -40,3 +40,58 @@
 .menu ul li a:hover{
 	background: rgba(50, 171, 226, 0.7);
 }
+
+.conteudoPrincipal {
+  background-image: url("../../public/imagens/bgsec1.jpg");
+  /* Full height */
+	width: 100%;
+  height: 100vh;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.conteudoPrincipalEscrito {
+  align-items:center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.conteudoPrincipalEscritoTitulo {
+  font-family: 'Shrikhand', cursive;
+  color: #fffafa;
+  font-weigth: 400;
+  font-size: 64px;
+}
+
+.conteudoPrincipalEscritoSubTitulo {
+  color: #fffafa;
+  font-weigth: 400;
+  font-size: 24px;
+}
+
+.conteudoPrincipalEscritoBotao {
+  background-color: #bfc616;
+  width: 180px;
+  height: 60px;
+  border: none;
+  box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: 'Sarala',sans-serif;
+  color: #fffafa;
+  font-weigth: 400;
+  font-size: 24px;
+  transition:all 0.4s;
+}
+
+.conteudoPrincipalEscritoBotao:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+

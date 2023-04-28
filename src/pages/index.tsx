@@ -25,6 +25,14 @@ export default function Home() {
           </ul>
         </nav>
 
+        <section className={styles.conteudoPrincipal} >
+            <div className={styles.conteudoPrincipalEscrito}>
+                <h1 className={styles.conteudoPrincipalEscritoTitulo}>Aloha Tour</h1>
+                <h2 className={styles.conteudoPrincipalEscritoSubTitulo}>Agende passeios marítimos com os melhores roteiros da Ilha Grande, RJ.</h2>
+                <button className={styles.conteudoPrincipalEscritoBotao}><strong>Roteiros</strong></button>
+            </div>
+        </section>
+
         
       </main>
     </>
