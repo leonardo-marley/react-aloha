@@ -54,6 +54,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
 }
 
 .conteudoPrincipalEscrito {
