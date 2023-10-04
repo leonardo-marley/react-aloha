@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@component/styles/Home.module.css'
+import Caroussel from '../components/Caroussel'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +18,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <img src='../public/imagens/barcologo.png'/>
         <nav className={styles.menu}>
           <ul>
           <li><a >Home</a></li>
@@ -30,6 +33,9 @@ export default function Home() {
                 <h1 className={styles.conteudoPrincipalEscritoTitulo}>Aloha Tour</h1>
                 <h2 className={styles.conteudoPrincipalEscritoSubTitulo}>Agende passeios marítimos com os melhores roteiros da Ilha Grande, RJ.</h2>
                 <button className={styles.conteudoPrincipalEscritoBotao}><strong>Roteiros</strong></button>
+            </div>
+            <div>
+              <Caroussel />
             </div>
         </section>
 
