@@ -13,7 +13,7 @@ export default function BootstrapCarousel() {
     setIndex(selectedIndex);
   };
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel activeIndex={index} onSelect={handleSelect} style={{borderRadius:'1rem', boxShadow: '4px 5px 4px rgba(0, 0, 0, 0.25)'}}>
       {bootstrap.map((item) => (
         <Carousel.Item key={item.id} className={styles.itemP} interval={4000}>
           <img src={item.imageUrl} alt="slides" />
