@@ -46,7 +46,15 @@ html{
 }
 
 body{
-  background: var(--background-delphi);
+  font-size: 100%;
+  background-image: url("../../public/imagens/background.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--text);
 }
 
@@ -56,11 +64,6 @@ body, input, textarea, button, select{
 
 button{
   cursor: pointer;
-}
-
-a{
-  color: inherit;
-  text-decoration: none;
 }
 
 hr{

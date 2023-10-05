@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@component/styles/Home.module.css'
 import Caroussel from '../components/Caroussel'
+import WhatsAppButton from '@component/components/WhatsAppButton'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -13,12 +14,14 @@ export default function Home() {
       <Head>
         <title>AlohaTour | Home</title>
         <meta name="viewport" content="width=device-width,inicial-scale=1.0"/>
-        <meta name="discription" content="O melhor conforto com os melhores roteiros!"/>
+        <meta name="discription" content="O melhor conforto com os melhores passeios de barcos e roteiros da Ilha Grande e RJ!"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <img src='../public/imagens/barcologo.png'/>
+
+        <img src='../public/imagens/barcologoo.png'/>
+        
         <nav className={styles.menu}>
           <ul>
           <li><a >Home</a></li>
@@ -39,7 +42,7 @@ export default function Home() {
             </div>
         </section>
 
-        
+        <WhatsAppButton />
       </main>
     </>
   )

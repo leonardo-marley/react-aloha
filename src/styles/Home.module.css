@@ -11,6 +11,7 @@
 
 .menu  ul {
   display:flex;
+  color: #fffafa;
   margin: 0;
   padding: 0 10vw;
   float: right;
@@ -75,6 +76,7 @@
   color: #fffafa;
   font-weigth: 400;
   font-size: 24px;
+  align-self: center;
 }
 
 .conteudoPrincipalEscritoBotao {
