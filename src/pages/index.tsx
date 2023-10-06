@@ -42,6 +42,11 @@ export default function Home() {
             </div>
         </section>
 
+        <section className={styles.conteudoCards}>
+          <h1 style={{color: '#fffafa'}}>Roteiros</h1>
+
+        </section>
+
         <WhatsAppButton />
       </main>
     </>

@@ -9,7 +9,7 @@ export default function BootstrapCarousel() {
   const { bootstrap } = items;
   const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
+  const handleSelect = (selectedIndex: any, e: any) => {
     setIndex(selectedIndex);
   };
   return (
@@ -19,8 +19,6 @@ export default function BootstrapCarousel() {
           <img src={item.imageUrl} alt="slides" />
           <Carousel.Caption className={styles.caption}>
             <h4>{item.title}</h4>
-            {/* <p>{item.body}</p>
-            <button className="btn btn-danger">Visit Docs</button> */}
           </Carousel.Caption>
         </Carousel.Item>
       ))}
