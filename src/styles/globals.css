@@ -7,6 +7,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* *::before,
+  *::after {
+    box-sizing: border-box;
+  } */
+
 :root{
  
   --white: #fff;
@@ -27,6 +32,9 @@
   --color-erro: #b62c2c; 
   --color-acerto: #2cb638; 
   --color-erro: #b62c2c; 
+  --clr-neutral-900: hsl(207, 19%, 9%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-accent-400: hsl(142, 90%, 61%);
 }
 
 html{
@@ -42,6 +50,18 @@ html{
 @media(max-width: 720px){
   html {
     font-size: 87.5%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
   }
 }
 

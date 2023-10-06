@@ -107,3 +107,12 @@
   background-color: #4db47b;
 }
 
+.boxCards {
+  display: flex;
+  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
