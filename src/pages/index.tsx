@@ -77,6 +77,11 @@ export default function Home() {
         </section>
 
         <section className={styles.conteudoCards}>
+          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaCima} width={10000} height={10000} style={{position: 'absolute', marginLeft: -80, marginTop: -380, width: '100vw', height: '100%', overflow: 'hidden',rotate: '-0.5deg'}}/>
+          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaEsquerda} width={10000} height={10000} style={{position: 'absolute', marginLeft: -740, marginTop: 250, width: '100vw', height: '100%',rotate: '90deg', overflow: 'hidden'}}/>
+          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaDireita} width={10000} height={10000} style={{position: 'absolute', marginLeft: 580, marginTop: 250, width: '100vw', height: '100%',rotate: '90deg', overflow: 'hidden'}}/>
+          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaBaixo} width={10000} height={10000} style={{position: 'absolute', marginLeft: -80, marginTop: 875, width: '100vw', height: '100%', overflow: 'hidden'}}/>
+
           <h1 style={{color: '#fffafa'}} onClick={() => console.log(informacoes, 'Infos')}>Roteiros</h1>
           
           <div className={styles.boxCards}>
