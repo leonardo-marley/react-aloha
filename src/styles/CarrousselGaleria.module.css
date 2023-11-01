@@ -1,12 +1,12 @@
 /* Start Bootstrap carousel */
 .itemP {
-    height: fit-content;
+    height: 40rem;
+    width: 100%;
   }
   .itemP > img {
     width: 100%;
     object-fit: cover;
     height: 100%;
-    border-radius: 1rem;
   }
   
   .caption {

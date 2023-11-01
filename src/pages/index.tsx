@@ -8,6 +8,8 @@ import WhatsAppButton from '@component/components/WhatsAppButton'
 import Rodape from '@component/components/Rodape'
 import InformationCard, {InformationCardProps} from '@component/components/InformationCard'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { Box, IconButton, Tab, Tabs, Typography } from '@mui/material';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -41,10 +43,7 @@ export default function Home() {
   ]
   const [informacoes,setInformacoes] = useState(cards)
 
-  // useEffect(() => {
-  //   setInformacoes(infos)
-  // }, [])
-
+  
   return (
     <>
       <Head>
@@ -56,35 +55,33 @@ export default function Home() {
 
       <main className={styles.main}>
 
-        {/* <Image alt='Logo' src='../public/imagens/barcologoo.png' width={50} height={50}/> */}
+        {/* <Image alt='Logo' src='https://see.fontimg.com/api/renderfont4/vm6VD/eyJyIjoiZnMiLCJoIjo0MSwidyI6MTAwMCwiZnMiOjQxLCJmZ2MiOiIjQjBDQzE5IiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Um90ZWlyb3M/swimming-pool-demo.png' width={50} height={50}/> */}
 
         <nav className={styles.menu}>
           <ul>
-          <li><a >Home</a></li>
-          <li><a >Roteiros</a></li>
-          <li><a >Sobre</a></li>
-          <li><a >Contato</a></li>
+          <li><a href='#homeSection'>Home</a></li>
+          <li><a href='#roteirosSection'>Roteiros</a></li>
+          <li><a href='#sobreSection'>Sobre</a></li>
+          <li><a href='#contatoSection'>Contato</a></li>
           </ul>
         </nav>
 
-        <section className={styles.conteudoPrincipal} >
+        <section className={styles.conteudoPrincipal} id='homeSection'>
             <div className={styles.conteudoPrincipalEscrito}>
-                <h1 className={styles.conteudoPrincipalEscritoTitulo}>Aloha Tour</h1>
+                <h1 className={styles.conteudoPrincipalEscritoTitulo}>AlohaTour</h1>
                 <h2 className={styles.conteudoPrincipalEscritoSubTitulo}>Agende passeios marítimos com os melhores roteiros da Ilha Grande, RJ.</h2>
-                <button className={styles.conteudoPrincipalEscritoBotao}><strong>Roteiros</strong></button>
+                <Link href='#roteirosSection'>
+                  <button className={styles.conteudoPrincipalEscritoBotao}><strong>Roteiros</strong></button>
+                </Link>
             </div>
             <div>
               <Caroussel />
             </div>
         </section>
 
-        <section className={styles.conteudoCards}>
-          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaCima} width={10000} height={10000} style={{position: 'absolute', marginLeft: -80, marginTop: -380, width: '100vw', height: '100%', overflow: 'hidden',rotate: '-0.5deg'}}/>
-          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaEsquerda} width={10000} height={10000} style={{position: 'absolute', marginLeft: -740, marginTop: 250, width: '100vw', height: '100%',rotate: '90deg', overflow: 'hidden'}}/>
-          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaDireita} width={10000} height={10000} style={{position: 'absolute', marginLeft: 580, marginTop: 250, width: '100vw', height: '100%',rotate: '90deg', overflow: 'hidden'}}/>
-          <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaBaixo} width={10000} height={10000} style={{position: 'absolute', marginLeft: -80, marginTop: 875, width: '100vw', height: '100%', overflow: 'hidden'}}/>
-
-          <h1 style={{color: '#fffafa'}} >Roteiros</h1>
+        <section className={styles.conteudoCards} id='roteirosSection'>
+          {/* <h1 style={{color: '#fffafa', fontFamily: '"Shrikhand", cursive'}} >Roteiros</h1> */}
+          <Image alt='Logo' src='/../public/imagens/roteirosBubbleB.png' width={232} height={41} className={styles.roteirosTittle}/>
           
           <div className={styles.boxCards}>
             {informacoes?.map((item: any, index: any) =>
@@ -92,33 +89,69 @@ export default function Home() {
             )
             }
           </div>
+
+          <div className={styles.bubbles}>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div>
+            <div className={styles.bubble}></div> 
+          </div>
         </section>
 
         <WhatsAppButton />
 
-        <section className={styles.sobre}>
-          <h1 style={{color: '#fffafa'}} >Sobre</h1>
+        <section className={styles.sobre} id='sobreSection'>
+          {/* <h1 style={{color: '#fffafa'}} >Sobre</h1> */}
+          <div className={styles.sobreT}>
+            <Image alt='Logo' src='/../public/imagens/sobreBubble.png' width={143} height={41} className={styles.sobreTittle} style={{marginTop: '3rem'}}/>
+          </div>
 
+          <div className={styles.bolha}>
+            <div className={styles.sobre1}>
+              <p style={{display:'flex', position: 'relative', color: '#fffafa',fontWeight: '500',zIndex: '999'}}>
+                &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
+              </p>
+
+              <p style={{display:'flex', position: 'relative', color: '#fffafa', fontWeight: '500',zIndex: '999'}}>
+                &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
+              </p>
+            </div>
+          </div>
           <div className={styles.sobre1}>
-            <p style={{display:'flex', position: 'relative', color: '#fffafa',fontWeight: '500',zIndex: '999'}}>
-              &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
-            </p>
+              <p style={{display:'flex', position: 'relative', color: 'rgba(0, 0, 0, 0)'}}>
+                &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
+              </p>
 
-            <p style={{display:'flex', position: 'relative', color: '#fffafa', fontWeight: '500',zIndex: '999'}}>
-              &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
-            </p>
-          </div>
-          <div className={styles.bolha}/>
-
-          <div className={styles.sobre2}>
-            <h2 style={{color: '#fffafa'}} >Localização</h2>
-          </div>
-
-          <div className={styles.sobre3}>
-            <h2 style={{color: '#fffafa'}} >Galeria</h2>
-            <CarousselGaleria />
-          </div>
+              <p style={{display:'flex', position: 'relative', color: 'rgba(0, 0, 0, 0)'}}>
+                &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
+              </p>
+            </div>
         </section>
+
+        <div className={styles.local}>
+          {/* <h2 style={{color: '#fffafa'}} >Localização</h2> */}
+          <Image alt='Logo' src='/../public/imagens/localBubble.png' width={139} height={41} className={styles.localTittle}/>
+        </div>
+
+        <div className={styles.galeria}>
+          {/* <h2 style={{color: '#fffafa',padding: '0 2rem 0 2rem'}} >Galeria</h2> */}
+          <p>
+            <Image alt='Logo' src='/../public/imagens/galeriaBubble.png' width={195} height={41} className={styles.galeriaTittle}/>
+          </p>
+          <CarousselGaleria />
+        </div>
+
+        <div className={styles.contato} id='contatoSection'>
+          <p>
+            <Image alt='Logo' src='/../public/imagens/contatoBubble.png' width={215} height={41} className={styles.contatoTittle}/>
+          </p>
+        </div>
 
         <section className={styles.rodape}>
           <Rodape />
