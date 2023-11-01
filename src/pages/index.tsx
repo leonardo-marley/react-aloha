@@ -3,7 +3,9 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@component/styles/Home.module.css'
 import Caroussel from '../components/Caroussel'
+import CarousselGaleria from '../components/CarrousselGaleria'
 import WhatsAppButton from '@component/components/WhatsAppButton'
+import Rodape from '@component/components/Rodape'
 import InformationCard, {InformationCardProps} from '@component/components/InformationCard'
 import { useEffect, useState } from 'react'
 
@@ -82,7 +84,7 @@ export default function Home() {
           <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaDireita} width={10000} height={10000} style={{position: 'absolute', marginLeft: 580, marginTop: 250, width: '100vw', height: '100%',rotate: '90deg', overflow: 'hidden'}}/>
           <Image src='/../public/imagens/corda2.png' alt='Corda' className={styles.cordaBaixo} width={10000} height={10000} style={{position: 'absolute', marginLeft: -80, marginTop: 875, width: '100vw', height: '100%', overflow: 'hidden'}}/>
 
-          <h1 style={{color: '#fffafa'}} onClick={() => console.log(informacoes, 'Infos')}>Roteiros</h1>
+          <h1 style={{color: '#fffafa'}} >Roteiros</h1>
           
           <div className={styles.boxCards}>
             {informacoes?.map((item: any, index: any) =>
@@ -93,6 +95,34 @@ export default function Home() {
         </section>
 
         <WhatsAppButton />
+
+        <section className={styles.sobre}>
+          <h1 style={{color: '#fffafa'}} >Sobre</h1>
+
+          <div className={styles.sobre1}>
+            <p style={{display:'flex', position: 'relative', color: '#fffafa',fontWeight: '500',zIndex: '999'}}>
+              &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
+            </p>
+
+            <p style={{display:'flex', position: 'relative', color: '#fffafa', fontWeight: '500',zIndex: '999'}}>
+              &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
+            </p>
+          </div>
+          <div className={styles.bolha}/>
+
+          <div className={styles.sobre2}>
+            <h2 style={{color: '#fffafa'}} >Localização</h2>
+          </div>
+
+          <div className={styles.sobre3}>
+            <h2 style={{color: '#fffafa'}} >Galeria</h2>
+            <CarousselGaleria />
+          </div>
+        </section>
+
+        <section className={styles.rodape}>
+          <Rodape />
+        </section>
       </main>
     </>
   )
