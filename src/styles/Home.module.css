@@ -197,6 +197,70 @@
   justify-content: center;
 }
 
+.divFormAgendamento {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: #E6FDFB;
+  box-shadow: inset 4px 5px 4px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  justify-items: center;
+}
+
+.containerForm{
+  display: grid;
+  width: 85%;
+  gap: 1rem;
+}
+
+.nome {
+  display: grid;
+  width: 100%;
+}
+
+.nome > input {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  height: 34px;
+  padding: 0 0 0 5px;
+}
+
+.nome > input:focus {
+  outline: none;
+}
+
+.obrigatorio{
+  font-size: 10px;
+  color: #ff3a3a;
+}
+
+.observacao {
+  display: grid;
+}
+
+.observacao > textarea {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  resize: vertical;
+  padding: 0 0 0 5px;
+}
+
+.observacao > textarea:focus {
+  outline: none;
+}
+
+.divFormDuvida {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: #E6FDFB;
+  box-shadow: inset 4px 5px 4px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  justify-items: center;
+}
+
 .bolha {
   position: absolute;
   height: fit-content;
@@ -333,4 +397,105 @@
   }
 }
 /* End Bubbles */
+
+/* Inicio botão envio */
+.botaoEnvio {
+  position:relative;
+  padding: 10px 20px;  
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Sarala',sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;  
+  color: rgb(230, 239, 248);
+  background-color: rgb(0, 183, 255);
+  box-shadow: hsla(210, 40%, 52%, .4) 2px 2px 22px;
+  border-radius: 4px; 
+  z-index: 0;  
+  overflow: hidden;   
+}
+
+.botaoEnvio:focus {
+  outline-color: transparent;
+  box-shadow: hsl(210, 80%, 42%) 2px 2px 22px;
+}
+
+.right::after, .botaoEnvio::after {
+  content: var(--content);
+  display: block;
+  position: absolute;
+  white-space: nowrap;
+  padding: 40px 40px;
+  pointer-events:none;
+}
+
+.botaoEnvio::after{
+  font-weight: 200;
+  top: -30px;
+  left: -20px;
+} 
+
+.right, .left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+.right {
+  left: 66%;
+}
+.left {
+  right: 66%;
+}
+.right::after {
+  top: -30px;
+  left: calc(-66% - 20px);
+  
+  background-color: #141218;
+  color:transparent;
+  transition: transform .4s ease-out;
+  transform: translate(0, -90%) rotate(0deg)
+}
+
+.botaoEnvio:hover > .right::after {
+  transform: translate(0, -47%) rotate(0deg)
+}
+
+.botaoEnvio > .right:hover::after {
+  transform: translate(0, -50%) rotate(-7deg)
+}
+
+.botaoEnvio > .left:hover ~ .right::after {
+  transform: translate(0, -50%) rotate(7deg)
+}
+
+/* bubbles */
+.botaoEnvio::before {
+  content: '';
+  pointer-events: none;
+  opacity: .6;
+  background:
+    radial-gradient(circle at 20% 35%,  transparent 0,  transparent 2px, hsla(210, 50%, 85%, 1) 3px, hsla(210, 50%, 85%, 1) 4px, transparent 4px),
+    radial-gradient(circle at 75% 44%, transparent 0,  transparent 2px, hsla(210, 50%, 85%, 1) 3px, hsla(210, 50%, 85%, 1) 4px, transparent 4px),
+    radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, hsla(210, 50%, 85%, 1) 5px, hsla(210, 50%, 85%, 1) 6px, transparent 6px);
+
+  width: 100%;
+  height: 300%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: bubbles 5s linear infinite both;
+}
+
+@keyframes bubbles {
+  from {
+    transform: translate();
+  }
+  to {
+    transform: translate(0, -66.666%);
+  }
+}
+/* Fim botão envio */
 
