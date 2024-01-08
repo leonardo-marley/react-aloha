@@ -75,6 +75,7 @@ export default function Home() {
   const [isClient,setIsClient] = useState<boolean>();
   const [informacoes,setInformacoes] = useState(cards);
   const [nomeAgendamento,setNomeAgendamento] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [indexAba, setIndexAba] = useState(0);
   const {register, handleSubmit} = useForm(); 
 
@@ -145,6 +146,55 @@ export default function Home() {
 
   function agendarPasseio(data: any){
     console.log(data)
+  }
+
+  function tirarDuvida(data: any){
+    console.log(data)
+  }
+
+  const formataCelular = (input : string) => { 
+    let numeroLimpo = input.replace(/\D/g, ''); 
+ 
+    if (numeroLimpo.length === 11) { 
+      setTelefone(`(${numeroLimpo.slice(0, 2)}) ${numeroLimpo.slice(2, 7)}-${numeroLimpo.slice(7)}`); 
+    } else if (numeroLimpo.length === 10) { 
+      setTelefone(`(${numeroLimpo.slice(0, 2)}) ${numeroLimpo.slice(2, 6)}-${numeroLimpo.slice(6)}`); 
+    } else { 
+      setTelefone(numeroLimpo); 
+    } 
+  }
+
+  function Formulario() {
+    return(
+      <>
+        <form className={styles.containerForm} onSubmit={indexAba == 0 ? handleSubmit(agendarPasseio) : handleSubmit(tirarDuvida)}>
+          <div className={styles.nomeCel}>
+            <div className={styles.nome}>
+              <label htmlFor='nome'>Nome</label> 
+              <input {...register('nome')} name='nome' type="text" placeholder="" value={nomeAgendamento} onChange={(e) => setNomeAgendamento(e.target.value)} required></input>
+              <span className={styles.obrigatorio}>Campo obrigatório *</span>
+            </div>
+            <div className={styles.telefone}>
+              <label htmlFor='telefone'>Celular</label> 
+              <input {...register('telefone')} name='telefone' type="tel" placeholder="(99)9999-9999" maxLength={15}  value={telefone} onChange={(e) => formataCelular(e.target.value)} ></input>
+              <span className={styles.obrigatorio} style={{visibility: 'hidden'}}>Campo obrigatório *</span>
+            </div>
+          </div>
+
+          <div className={styles.observacao}>
+            <label htmlFor={indexAba == 0 ? "observacao" : "duvida"}>{indexAba == 0 ? 'Observação' : 'Dúvida'}</label>
+            <textarea {...indexAba == 0 ? {...register('observacao')} : {...register('duvida')}} name={indexAba == 0 ? 'observacao' : 'duvida'} rows={4} />
+          </div>
+
+          <button className={styles.botaoEnvio} type='submit'>
+            <div className={styles.left}></div>
+              {indexAba == 0 ? 'Agendar' : 'Perguntar'}
+            <div className={styles.right}></div>
+          </button>
+
+        </form>
+      </>
+    )
   }
 
   return (
@@ -272,39 +322,7 @@ export default function Home() {
               >
                 { isClient &&
                   <div className={styles.divFormAgendamento}>
-                    <form className={styles.containerForm} onSubmit={handleSubmit(agendarPasseio)}>
-                      <div className={styles.nome}>
-                        <label htmlFor='nome'>Nome</label> 
-                        <input {...register('nome')} name='nome' type="text" placeholder="" value={nomeAgendamento} onChange={(e) => setNomeAgendamento(e.target.value)}></input>
-                        <span className={styles.obrigatorio}>Campo obrigatório *</span>
-                      </div>
-
-                      <div className={styles.observacao}>
-                        <label htmlFor="observacao">Observação</label>
-                        <textarea {...register('observacao')} name='observacao' rows={4} />
-                      </div>
-
-                      <button className={styles.botaoEnvio} type='submit'>
-                        <div className={styles.left}></div>
-                          Agendar
-                        <div className={styles.right}></div>
-                      </button>
-
-                      <a target="_blank" >
-                        <svg style={{
-                          width:'2em',
-                          height:'2em',
-                          position:'fixed',
-                          top:'1em',left:'1em',
-                          opacity:.8}} 
-                          viewBox="0 0 24 24"
-                        >
-                          <path 
-                            fill="#fff" 
-                            d="M17.71,9.33C18.19,8.93 18.75,8.45 19,7.92C18.59,8.13 18.1,8.26 17.56,8.33C18.06,7.97 18.47,7.5 18.68,6.86C18.16,7.14 17.63,7.38 16.97,7.5C15.42,5.63 11.71,7.15 12.37,9.95C9.76,9.79 8.17,8.61 6.85,7.16C6.1,8.38 6.75,10.23 7.64,10.74C7.18,10.71 6.83,10.57 6.5,10.41C6.54,11.95 7.39,12.69 8.58,13.09C8.22,13.16 7.82,13.18 7.44,13.12C7.81,14.19 8.58,14.86 9.9,15C9,15.76 7.34,16.29 6,16.08C7.15,16.81 8.46,17.39 10.28,17.31C14.69,17.11 17.64,13.95 17.71,9.33M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2Z" />
-                        </svg>
-                      </a>
-                    </form>
+                    <Formulario />
                   </div>
                 }
               </TabPanel>
@@ -315,7 +333,7 @@ export default function Home() {
               >
                 { isClient &&
                   <div className={styles.divFormDuvida}>
-                    <h3>Tirar Dúvidas</h3>
+                    <Formulario />
                   </div>
                 }
               </TabPanel>

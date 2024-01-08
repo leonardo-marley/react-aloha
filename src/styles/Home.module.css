@@ -224,10 +224,46 @@
   border-radius: 4px;
   height: 34px;
   padding: 0 0 0 5px;
+  width: 100%;
 }
 
 .nome > input:focus {
   outline: none;
+}
+
+.telefone {
+  display: grid;
+  width: 100%;
+}
+
+.telefone > input {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  height: 34px;
+  padding: 0 0 0 5px;
+  width: 100%;
+}
+
+.telefone > input:focus {
+  outline: none;
+}
+
+.nomeCel {
+  display: flex;
+  flex-wrap: wrap;
+  gap:.5rem;
+}
+
+.nomeCel > div {
+  width: 100%;
+}
+
+/* Media Query para telas menores */
+@media screen and (min-width: 600px) {
+  .nomeCel > div {
+    margin-right: 0; /* Remova o espaçamento entre os inputs */
+    width: auto; /* Faça os inputs ocuparem 100% da largura da tela */
+  }
 }
 
 .obrigatorio{
