@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 import { Inter } from 'next/font/google'
 import styles from '@component/styles/Home.module.css'
 import Caroussel from '../components/Caroussel'
@@ -10,8 +11,14 @@ import Rodape from '@component/components/Rodape'
 import InformationCard, {InformationCardProps} from '@component/components/InformationCard'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Box, IconButton, Tab, Tabs, Typography } from '@mui/material';
+import { Box, FormControl, IconButton, InputLabel, MenuItem, Tab, Tabs, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { useRouter } from 'next/router';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { ptBR as datePtBR } from 'date-fns/locale';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,7 +31,6 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
 
   return (
     <div
@@ -72,15 +78,19 @@ export default function Home() {
       imageURL: "https://res.cloudinary.com/kizmelvin/image/upload/v1587870308/kizmelvin/edvin-johansson-5AylXcpJn1I-unsplash_lbhgod.jpg"
     }
   ]
+  let data1: Date = new Date();
+  data1.setDate(data1.getDate());
   const [isClient,setIsClient] = useState<boolean>();
   const [informacoes,setInformacoes] = useState(cards);
-  const [nomeAgendamento,setNomeAgendamento] = useState('');
+  const [roteiroSelect,setRoteiroSelect] = useState('');
+  const [data, setData] = useState<Date>(data1);
   const [telefone, setTelefone] = useState('');
   const [indexAba, setIndexAba] = useState(0);
   const {register, handleSubmit} = useForm(); 
+  const router = useRouter();
 
   useEffect(() => {
-    setIsClient(true)
+    setIsClient(true);
   }, [])
 
   interface StyledTabsProps {
@@ -145,24 +155,18 @@ export default function Home() {
   }
 
   function agendarPasseio(data: any){
-    console.log(data)
+    let textoAgendamento = `Olá, vim pelo site alohatour.com.br \N
+                            Gostaria de age`
+    router.push(`https://wa.me//5524993217325?text=${textoAgendamento}`)
   }
 
   function tirarDuvida(data: any){
     console.log(data)
   }
 
-  const formataCelular = (input : string) => { 
-    let numeroLimpo = input.replace(/\D/g, ''); 
- 
-    if (numeroLimpo.length === 11) { 
-      setTelefone(`(${numeroLimpo.slice(0, 2)}) ${numeroLimpo.slice(2, 7)}-${numeroLimpo.slice(7)}`); 
-    } else if (numeroLimpo.length === 10) { 
-      setTelefone(`(${numeroLimpo.slice(0, 2)}) ${numeroLimpo.slice(2, 6)}-${numeroLimpo.slice(6)}`); 
-    } else { 
-      setTelefone(numeroLimpo); 
-    } 
-  }
+  const handleChangeSelect = (event: SelectChangeEvent) => {
+    setRoteiroSelect(event.target.value);
+  };
 
   function Formulario() {
     return(
@@ -171,15 +175,63 @@ export default function Home() {
           <div className={styles.nomeCel}>
             <div className={styles.nome}>
               <label htmlFor='nome'>Nome</label> 
-              <input {...register('nome')} name='nome' type="text" placeholder="" value={nomeAgendamento} onChange={(e) => setNomeAgendamento(e.target.value)} required></input>
+              <input {...register('nome')} name='nome' type="text" placeholder="" ></input>
               <span className={styles.obrigatorio}>Campo obrigatório *</span>
             </div>
             <div className={styles.telefone}>
               <label htmlFor='telefone'>Celular</label> 
-              <input {...register('telefone')} name='telefone' type="tel" placeholder="(99)9999-9999" maxLength={15}  value={telefone} onChange={(e) => formataCelular(e.target.value)} ></input>
+              <InputMask {...register('telefone')} name='telefone' type="tel" mask="(99)99999-9999" placeholder="(99)9999-9999" maxLength={15} />
               <span className={styles.obrigatorio} style={{visibility: 'hidden'}}>Campo obrigatório *</span>
             </div>
           </div>
+
+          {indexAba == 0 &&
+            <div className={styles.roteiroPessoas}>
+              <div>
+                <label>Roteiros</label>
+                <FormControl sx={{ minWidth: 120, width: '100%' }} size="small">
+                  <Select
+                    labelId="demo-select-small-label"
+                    id="demo-select-small"
+                    value={roteiroSelect}
+                    label="Roteiro"
+                    onChange={handleChangeSelect}
+                    sx={{
+                      height: '34px',
+                      backgroundColor: '#FFFFFF',
+                      borderColor: 'var(--color-primary)',
+                    }}
+                  >
+                    <MenuItem value={1}>Gruta do Acaiá</MenuItem>
+                    <MenuItem value={2}>Lagoa Azul</MenuItem>
+                    <MenuItem value={3}>Ilhas Paradisíacas</MenuItem>
+                    <MenuItem value={4}>Lagoa Verde</MenuItem>
+                    <MenuItem value={5}>À Combinar</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+
+              <div className={styles.passageiros}>
+                <label htmlFor='passageiros'>Passageiros</label> 
+                <input {...register('passageiros')} name='passageiros' type="number" placeholder="" ></input>
+              </div>
+
+              <div className={styles.dataPickerContainer}>
+                  <label 
+                      htmlFor="data" 
+                  >Data </label>
+                  <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={datePtBR}>
+                      <DesktopDatePicker 
+                        // inputFormat="dd/MM/yyyy"
+                        value={data}
+                        onChange={(newValue) => {
+                            setData(newValue);
+                        }}
+                      />
+                  </LocalizationProvider>
+              </div>
+            </div>
+          }
 
           <div className={styles.observacao}>
             <label htmlFor={indexAba == 0 ? "observacao" : "duvida"}>{indexAba == 0 ? 'Observação' : 'Dúvida'}</label>

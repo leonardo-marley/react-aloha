@@ -248,22 +248,41 @@
   outline: none;
 }
 
-.nomeCel {
-  display: flex;
-  flex-wrap: wrap;
-  gap:.5rem;
+.nomeCel, .roteiroPessoas {
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: 1fr 1fr;
 }
 
-.nomeCel > div {
-  width: 100%;
+.roteiroPessoas {
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: 1fr .5fr .5fr;
 }
 
 /* Media Query para telas menores */
-@media screen and (min-width: 600px) {
-  .nomeCel > div {
-    margin-right: 0; /* Remova o espaçamento entre os inputs */
-    width: auto; /* Faça os inputs ocuparem 100% da largura da tela */
+@media screen and (max-width: 600px) {
+  .nomeCel, .roteiroPessoas  {
+    display: grid;
+    grid-template-columns: 1fr;
   }
+}
+
+.passageiros {
+  display: grid;
+  width: 100%;
+}
+
+.passageiros > input {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  height: 34px;
+  padding: 0 0 0 5px;
+  width: 100%;
+}
+
+.passageiros > input:focus {
+  outline: none;
 }
 
 .obrigatorio{
