@@ -19,6 +19,10 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { ptBR as datePtBR } from 'date-fns/locale';
+import { format } from 'date-fns';
+// Packages //
+import { NotificationContainer , NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -83,11 +87,13 @@ export default function Home() {
   const [isClient,setIsClient] = useState<boolean>();
   const [informacoes,setInformacoes] = useState(cards);
   const [roteiroSelect,setRoteiroSelect] = useState('');
-  const [data, setData] = useState<Date>(data1);
+  const [dataAgendamento, setDataAgendamento] = useState<Date>(data1);
   const [telefone, setTelefone] = useState('');
   const [indexAba, setIndexAba] = useState(0);
   const {register, handleSubmit} = useForm(); 
   const router = useRouter();
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder('utf-8');
 
   useEffect(() => {
     setIsClient(true);
@@ -155,13 +161,53 @@ export default function Home() {
   }
 
   function agendarPasseio(data: any){
-    let textoAgendamento = `Olá, vim pelo site alohatour.com.br \N
-                            Gostaria de age`
-    router.push(`https://wa.me//5524993217325?text=${textoAgendamento}`)
+    if(!data.nome){
+      NotificationManager.error('Preencha o nome.', 'Formulário');
+     return;
+    } 
+
+    if(!dataAgendamento){
+      NotificationManager.error('Selecione a data.', 'Formulário');
+     return;
+    } 
+
+    if(!data.passageiros){
+      NotificationManager.error('Preencha a quantidade de passageiros.', 'Formulário');
+     return;
+    } 
+
+    if(!roteiroSelect){
+      NotificationManager.error('Selecione o roteiro.', 'Formulário');
+     return;
+    } 
+
+    let obs = data.observacao ? `Obs.:${data.observacao}` : ''
+    let textoAgendamento = `Olá, vim pelo site alohatour.com.br.
+    Me chamo, ${data.nome}.
+    Gostaria de agendar um passeio para o dia ${format(dataAgendamento,'dd/MM/yyyy')} com o roteiro ${roteiroSelect} para ${data.passageiros} pessoa(s). \nPoderia me ajudar?
+    ${obs}`
+    const textoUTF8 = encoder.encode(textoAgendamento);
+    const textoDecodificado = decoder.decode(textoUTF8);
+    router.push(`https://wa.me//5524993217325?text=${textoDecodificado}`)
   }
 
   function tirarDuvida(data: any){
-    console.log(data)
+    if(!data.nome){
+      NotificationManager.error('Preencha o nome.', 'Formulário');
+     return;
+    } 
+
+    if(!data.duvida){
+      NotificationManager.error('Preencha sua dúvida.', 'Formulário');
+     return;
+    } 
+
+    let textoDuvida = `Olá, vim pelo site alohatour.com.br.
+    Me chamo, ${data.nome}.
+    Gostaria de Tirar uma dúvida, pode me ajudar?`
+    const textoUTF8 = encoder.encode(textoDuvida);
+    const textoDecodificado = decoder.decode(textoUTF8);
+    router.push(`https://wa.me//5524993217325?text=${textoDecodificado} %0A ${data.duvida}`)
   }
 
   const handleChangeSelect = (event: SelectChangeEvent) => {
@@ -188,7 +234,7 @@ export default function Home() {
           {indexAba == 0 &&
             <div className={styles.roteiroPessoas}>
               <div>
-                <label>Roteiros</label>
+                <label>Roteiro</label>
                 <FormControl sx={{ minWidth: 120, width: '100%' }} size="small">
                   <Select
                     labelId="demo-select-small-label"
@@ -199,21 +245,24 @@ export default function Home() {
                     sx={{
                       height: '34px',
                       backgroundColor: '#FFFFFF',
-                      borderColor: 'var(--color-primary)',
+                      border: '1px solid var(--color-primary)',
                     }}
                   >
-                    <MenuItem value={1}>Gruta do Acaiá</MenuItem>
-                    <MenuItem value={2}>Lagoa Azul</MenuItem>
-                    <MenuItem value={3}>Ilhas Paradisíacas</MenuItem>
-                    <MenuItem value={4}>Lagoa Verde</MenuItem>
-                    <MenuItem value={5}>À Combinar</MenuItem>
+                    <MenuItem value={'Gruta do Acaiá'}>Gruta do Acaiá</MenuItem>
+                    <MenuItem value={'Lagoa Azul'}>Lagoa Azul</MenuItem>
+                    <MenuItem value={'Ilhas Paradisíacas'}>Ilhas Paradisíacas</MenuItem>
+                    <MenuItem value={'Lagoa Verde'}>Lagoa Verde</MenuItem>
+                    <MenuItem value={'À Combinar'}>À Combinar</MenuItem>
                   </Select>
+                  <span className={styles.obrigatorio}>Campo obrigatório *</span>
                 </FormControl>
+                
               </div>
 
               <div className={styles.passageiros}>
                 <label htmlFor='passageiros'>Passageiros</label> 
                 <input {...register('passageiros')} name='passageiros' type="number" placeholder="" ></input>
+                <span className={styles.obrigatorio}>Campo obrigatório *</span>
               </div>
 
               <div className={styles.dataPickerContainer}>
@@ -222,13 +271,21 @@ export default function Home() {
                   >Data </label>
                   <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={datePtBR}>
                       <DesktopDatePicker 
-                        // inputFormat="dd/MM/yyyy"
-                        value={data}
+                        value={dataAgendamento}
                         onChange={(newValue) => {
-                            setData(newValue);
+                            setDataAgendamento(newValue as Date);
+                        }}
+                        sx={{
+                          "& .MuiInputBase-root": {
+                            font: '400 1rem "Sarala", sans-serif',
+                            height: '34px',
+                            backgroundColor: '#FFF',
+                            border: '1px solid var(--color-primary)'
+                          }
                         }}
                       />
                   </LocalizationProvider>
+                  <span className={styles.obrigatorio}>Campo obrigatório *</span>
               </div>
             </div>
           }
@@ -259,7 +316,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-
+        <NotificationContainer />
         {/* <Image alt='Logo' src='https://see.fontimg.com/api/renderfont4/vm6VD/eyJyIjoiZnMiLCJoIjo0MSwidyI6MTAwMCwiZnMiOjQxLCJmZ2MiOiIjQjBDQzE5IiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Um90ZWlyb3M/swimming-pool-demo.png' width={50} height={50}/> */}
 
         <nav className={styles.menu}>

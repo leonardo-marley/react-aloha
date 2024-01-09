@@ -244,6 +244,11 @@
   width: 100%;
 }
 
+.dataPickerContainer {
+  display: grid;
+  width: 100%;
+}
+
 .telefone > input:focus {
   outline: none;
 }
