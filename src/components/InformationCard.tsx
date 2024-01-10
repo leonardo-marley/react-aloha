@@ -5,7 +5,8 @@ export interface InformationCardProps {
     id: number,
     title: string,
     body: string,
-    imageURL: string
+    imageURL: string,
+    valor?: number
 }
 
 export interface InformationCardCompProps {
@@ -22,6 +23,7 @@ export default function InformationCard(props: InformationCardCompProps) {
                     <div className={styles.cardContent}>
                     <h2 className={styles.cardTitle}>{props.dados?.title}</h2>
                     <p className={styles.cardBody}>
+                        <p>À Partir de <span style={{fontSize: '32px'}}>R${props.dados?.valor}</span></p>
                         {props.dados?.body}
                     </p>
                     </div>

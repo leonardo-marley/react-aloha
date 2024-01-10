@@ -204,6 +204,7 @@
 .nome {
   display: grid;
   width: 100%;
+  text-align: left;
 }
 
 .nome > input {
@@ -221,6 +222,7 @@
 .telefone {
   display: grid;
   width: 100%;
+  text-align: left;
 }
 
 .telefone > input {
@@ -250,6 +252,7 @@
   display: grid;
   gap: .5rem;
   grid-template-columns: 1fr .5fr .5fr;
+  text-align: left;
 }
 
 /* Media Query para telas menores */
@@ -263,6 +266,7 @@
 .passageiros {
   display: grid;
   width: 100%;
+  text-align: left;
 }
 
 .passageiros > input {
@@ -309,6 +313,7 @@
   box-shadow: inset 4px 5px 4px rgba(0, 0, 0, 0.25);
   padding: 2rem;
   justify-items: center;
+  text-align: left;
 }
 
 .bolha {
