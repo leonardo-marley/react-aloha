@@ -278,8 +278,11 @@
 }
 
 .obrigatorio{
+  display: flex;
   font-size: 10px;
   color: #ff3a3a;
+  position: relative;
+  left: 0;
 }
 
 .observacao {
