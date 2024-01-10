@@ -2,8 +2,7 @@
     display: flex;
     width: 100%;
     padding: 1rem;
-    background: rgb(2,0,36);
-    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
     color: #fffafa;
     align-items: center;
     gap: 1rem;

@@ -61,13 +61,13 @@ export default function Home() {
       id: 1,
       title: "Gruta do Acaiá",
       body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel Example",
-      imageURL: "https://res.cloudinary.com/kizmelvin/image/upload/v1586799813/kizmelvin/persons_pigeon_nurkq2.jpg"
+      imageURL: "https://github.com/leonardo-marley/alohatour/blob/master/gruta.jpeg"
     },
     {
       id: 2,
       title: "Lagoa Verde",
       body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel Example",
-      imageURL: "https://res.cloudinary.com/kizmelvin/image/upload/v1587785064/kizmelvin/michael-BcgEo2CNeYA-unsplash_cdaruk.jpg"
+      imageURL: "https://github.com/leonardo-marley/alohatour/blob/master/bgsec1.3.jpg"
     },
     {
       id: 3,
@@ -317,7 +317,30 @@ export default function Home() {
 
       <main className={styles.main}>
         <NotificationContainer />
-        {/* <Image alt='Logo' src='https://see.fontimg.com/api/renderfont4/vm6VD/eyJyIjoiZnMiLCJoIjo0MSwidyI6MTAwMCwiZnMiOjQxLCJmZ2MiOiIjQjBDQzE5IiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Um90ZWlyb3M/swimming-pool-demo.png' width={50} height={50}/> */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          textShadow: '5px 5px 5px #222'
+        }}>
+          <Image 
+            className={styles.logo}
+            alt='Logo' 
+            src='/../public/imagens/garrafa3.png' 
+            width={130} 
+            height={130}
+            style={{
+              marginLeft: '5rem'
+            }}
+          />
+          <h2
+            style={{
+              fontFamily: "'Shrikhand',cursive",
+              color: 'var(--white)',
+              fontWeight: 600,
+              marginLeft: '1rem'
+            }}
+          >Aloha Tour</h2>
+        </div>
 
         <nav className={styles.menu}>
           <ul>
@@ -342,8 +365,13 @@ export default function Home() {
         </section>
 
         <section className={styles.conteudoCards} id='roteirosSection'>
-          {/* <h1 style={{color: '#fffafa', fontFamily: '"Shrikhand", cursive'}} >Roteiros</h1> */}
-          <Image alt='Logo' src='/../public/imagens/roteirosBubbleB.png' width={232} height={41} className={styles.roteirosTittle}/>
+          <h2
+            style={{
+              fontFamily: "'Sarala',sans-serif",
+              color: 'var(--white)',
+              fontWeight: 600,
+            }}
+          >Roteiros</h2>
           
           <div className={styles.boxCards}>
             {informacoes?.map((item: any, index: any) =>
@@ -369,50 +397,79 @@ export default function Home() {
         <WhatsAppButton />
 
         <section className={styles.sobre} id='sobreSection'>
-          {/* <h1 style={{color: '#fffafa'}} >Sobre</h1> */}
           <div className={styles.sobreT}>
-            <Image alt='Logo' src='/../public/imagens/sobreBubble.png' width={143} height={41} className={styles.sobreTittle} style={{marginTop: '3rem'}}/>
+            <Image 
+              alt='Logo' src='/../public/imagens/mergulho.png' 
+              width={152} 
+              height={152} 
+              className={styles.mergulhador} 
+              style={{ position: 'absolute', left: 0, right: 0}}
+            />
+            <h2
+              style={{
+                fontFamily: "'Sarala',sans-serif",
+                color: 'var(--white)',
+                fontWeight: 600,
+              }}
+            >Sobre</h2>
           </div>
-
-          <div className={styles.bolha}>
-            <div className={styles.sobre1}>
-              <p style={{display:'flex', position: 'relative', color: '#fffafa',fontWeight: '500',zIndex: '999'}}>
-                &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
-              </p>
-
-              <p style={{display:'flex', position: 'relative', color: '#fffafa', fontWeight: '500',zIndex: '999'}}>
-                &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
-              </p>
-            </div>
-          </div>
+          
           <div className={styles.sobre1}>
-              <p style={{display:'flex', position: 'relative', color: 'rgba(0, 0, 0, 0)'}}>
-                &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
-              </p>
+            <p style={{display:'flex', position: 'relative', color: '#fffafa',fontWeight: '500',zIndex: '999'}}>
+              &nbsp; &nbsp; A AlohaTour vem transformando sonhos de viagem em experiências inesquecíveis no cenário do turismo aquático. Com um profundo conhecimento da região em que operamos e uma dedicação incansável em proporcionar o melhor custo-benefício aos nossos clientes, somos a escolha ideal para quem busca aventuras únicas em meio às águas.
+            </p>
 
-              <p style={{display:'flex', position: 'relative', color: 'rgba(0, 0, 0, 0)'}}>
-                &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
-              </p>
-            </div>
+            <p style={{display:'flex', position: 'relative', color: '#fffafa', fontWeight: '500',zIndex: '999'}}>
+              &nbsp; &nbsp; O coração da nossa empresa bate em sintonia com os desejos dos nossos viajantes, por isso que além dos roteiros fechados, oferecemos também experiências únicas. Compreendemos que cada pessoa tem necessidades e expectativas diferentes quando se aventura nas águas, e é por isso que personalizamos cada roteiro para atender às necessidades específicas de cada cliente. Seja um aventureiro em busca de mergulhos emocionantes, um casal em busca de romance nas águas cristalinas ou uma família que busca relaxar à beira-mar, estamos prontos para criar o passeio perfeito para você.
+            </p>
+
+            
+          </div>
+          
+          <div style={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'flex-end'
+          }}>
+            <Image 
+              alt='Logo' src='/../public/imagens/mergulho2.png' 
+              width={152} 
+              height={152} 
+            />
+          </div>
+          
+
         </section>
 
         <div className={styles.local}>
-          {/* <h2 style={{color: '#fffafa'}} >Localização</h2> */}
-          <Image alt='Logo' src='/../public/imagens/localBubble.png' width={139} height={41} className={styles.localTittle}/>
+          <h2
+            style={{
+              fontFamily: "'Sarala',sans-serif",
+              color: 'var(--white)',
+              fontWeight: 600,
+            }}
+          >Localização</h2>
         </div>
 
         <div className={styles.galeria}>
-          {/* <h2 style={{color: '#fffafa',padding: '0 2rem 0 2rem'}} >Galeria</h2> */}
-          <p>
-            <Image alt='Logo' src='/../public/imagens/galeriaBubble.png' width={195} height={41} className={styles.galeriaTittle}/>
-          </p>
+          <h2
+            style={{
+              fontFamily: "'Sarala',sans-serif",
+              color: 'var(--white)',
+              fontWeight: 600,
+            }}
+          >Galeria</h2>
           <CarousselGaleria />
         </div>
 
         <div className={styles.contato} id='contatoSection'>
-          <p>
-            <Image alt='Logo' src='/../public/imagens/contatoBubble.png' width={215} height={41} className={styles.contatoTittle}/>
-          </p>
+          <h2
+            style={{
+              fontFamily: "'Sarala',sans-serif",
+              color: 'var(--white)',
+              fontWeight: 600,
+            }}
+          >Contato</h2>
 
           <div className={styles.contatoContainer}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', height: '48px', bottom: '0' }}>

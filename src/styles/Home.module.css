@@ -112,11 +112,7 @@
   justify-items: center;
 }
 
-.roteirosTittle, 
-.sobreTittle,
-.localTittle,
-.galeriaTittle,
-.contatoTittle {
+.logo {
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
   z-index: 999;
@@ -132,38 +128,26 @@
 }
 
 .sobre {
-  display: flex;
+  display: grid;
   background-color: #3f92c8;
-  padding: 2rem;
-  flex-direction: column;
+  padding: 1rem;
   justify-items: center;
 }
 
 .sobre1 {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin-top: 5rem;
+  width: 100%;
   justify-content: center;
-  height: fit-content;
-}
-
-.sobre1 > p {
-  margin-left: 13.5%;
-}
-
-.sobre1 > p:nth-child(1) {
-  padding: 3rem 0 0 0;
-}
-
-.sobre1 > p:nth-child(2) {
-  padding: 0 0 5rem 0;
+  padding: 1rem 3rem 0 3rem;
+  margin-top: 3rem;
 }
 
 .sobreT {
   display: flex;
   width: 100%;
   justify-content: center;
+  align-items: center;
 }
 
 .local {
@@ -178,6 +162,7 @@
   display: grid;
   gap: 1rem;
   background-color: #3f92c8;
+  text-align: center;
 }
 
 .galeria > p {
@@ -188,7 +173,9 @@
 
 .contato {
   padding: 2rem;
-  background: rgb(0,212,255);
+  background: rgb(13,202,240);
+  background: linear-gradient(0deg, rgba(13,202,240,1) 0%, rgba(13,202,240,1) 74%, rgba(63,146,200,1) 100%);
+  text-align: center;
 }
 
 .contato > p {
