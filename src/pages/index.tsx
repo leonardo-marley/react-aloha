@@ -468,7 +468,7 @@ export default function Home() {
               fontFamily: "'Sarala',sans-serif",
               color: 'var(--white)',
               fontWeight: 600,
-              marginTop: '10rem'
+              marginTop: '15rem'
             }}
           >Galeria</h2>
           <CarousselGaleria />
