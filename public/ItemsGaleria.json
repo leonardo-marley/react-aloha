@@ -5,21 +5,21 @@
           "id": 1,
           "title": "Gruta do Acaiá",
           "body": "Bootstrap Carousel Example",
-          "imageUrl": "https://res.cloudinary.com/kizmelvin/image/upload/v1586799813/kizmelvin/persons_pigeon_nurkq2.jpg",
+          "imageUrl": "https://angradosreisturismo.com.br/cdn/shop/products/ilha-botinas-01.jpg?v=1661886294",
           "docs": "https://getbootstrap.com/docs/4.0/components/carousel/"
         },
         {
           "id": 2,
           "title": "Lagoa Verde",
           "body": "Bootstrap Carousel Example",
-          "imageUrl": "https://res.cloudinary.com/kizmelvin/image/upload/v1587785064/kizmelvin/michael-BcgEo2CNeYA-unsplash_cdaruk.jpg",
+          "imageUrl": "https://live.staticflickr.com/8453/8007995475_73504d06bc_b.jpg",
           "docs": "https://getbootstrap.com/docs/4.0/components/carousel/"
         },
         {
           "id": 3,
           "title": "Ilhas Paradisíacas",
           "body": "Bootstrap Carousel Example",
-          "imageUrl": "https://res.cloudinary.com/kizmelvin/image/upload/v1586799827/kizmelvin/brownlion_qm8hah.jpg",
+          "imageUrl": "https://live.staticflickr.com/8444/8007975579_6b001cd359_b.jpg",
           "docs": "https://getbootstrap.com/docs/4.0/components/carousel/"
         }
       ],

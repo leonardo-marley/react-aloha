@@ -61,28 +61,28 @@ export default function Home() {
       id: 1,
       title: "Gruta do Acaiá",
       body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
-      imageURL: "https://github.com/leonardo-marley/alohatour/blob/master/gruta.jpeg",
+      imageURL: "https://images.prismic.io/incriveisexperiencias/3cd6818b-d422-4ecd-9d6f-10a59baeb1b1_197437893_120663160181796_2727319826198232634_n.jpg?auto=compress,format",
       valor: 120
     },
     {
       id: 2,
       title: "Lagoa Verde",
       body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
-      imageURL: "https://github.com/leonardo-marley/alohatour/blob/master/bgsec1.3.jpg",
+      imageURL: "https://www.tevejopelomundo.com.br/wp-content/uploads/2020/03/lagoa-verde-Ilha-grande.jpg",
       valor: 100
     },
     {
       id: 3,
       title: "Ilhas Paradisíacas",
       body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
-      imageURL: "https://res.cloudinary.com/kizmelvin/image/upload/v1586799827/kizmelvin/brownlion_qm8hah.jpg",
+      imageURL: "https://www.essemundoenosso.com.br/wp-content/uploads/2019/06/Ilhas-Paradisiacas-Piedade_Destaque-740x463.jpg.webp",
       valor: 150
     },
     {
       id: 4,
       title: "Lagoa Azul",
       body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
-      imageURL: "https://res.cloudinary.com/kizmelvin/image/upload/v1587870308/kizmelvin/edvin-johansson-5AylXcpJn1I-unsplash_lbhgod.jpg",
+      imageURL: "https://img.freepik.com/fotos-premium/pesque-na-lagoa-azul-da-ilha-grande-em-angra-dos-reis_63139-2834.jpg?w=2000",
       valor: 100
     }
   ]
@@ -211,7 +211,7 @@ export default function Home() {
     Gostaria de Tirar uma dúvida, pode me ajudar?`
     const textoUTF8 = encoder.encode(textoDuvida);
     const textoDecodificado = decoder.decode(textoUTF8);
-    router.push(`https://wa.me//5524993217325?text=${textoDecodificado} %0A ${data.duvida}`)
+    router.push(`https://wa.me//5524993217325?text=${textoDecodificado} %0A${data.duvida}`)
   }
 
   const handleChangeSelect = (event: SelectChangeEvent) => {
@@ -374,6 +374,7 @@ export default function Home() {
               fontFamily: "'Sarala',sans-serif",
               color: 'var(--white)',
               fontWeight: 600,
+              textShadow: '5px 5px 5px #222'
             }}
           >Roteiros</h2>
           
@@ -402,7 +403,7 @@ export default function Home() {
         <WhatsAppButton />
 
         <section className={styles.sobre} id='sobreSection'>
-          <div className={styles.sobreT}>
+          <div className={styles.sobreT} style={{textShadow: '5px 5px 5px #222'}}>
             <Image 
               alt='Logo' src='/../public/imagens/mergulho.png' 
               width={152} 
@@ -456,12 +457,13 @@ export default function Home() {
           >Localização</h2>
         </div>
 
-        <div className={styles.galeria}>
+        <div className={styles.galeria} style={{textShadow: '5px 5px 5px #222'}}>
           <h2
             style={{
               fontFamily: "'Sarala',sans-serif",
               color: 'var(--white)',
               fontWeight: 600,
+              marginTop: '2rem'
             }}
           >Galeria</h2>
           <CarousselGaleria />
@@ -473,6 +475,7 @@ export default function Home() {
               fontFamily: "'Sarala',sans-serif",
               color: 'var(--white)',
               fontWeight: 600,
+              textShadow: '5px 5px 5px #222'
             }}
           >Contato</h2>
 
