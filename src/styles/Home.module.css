@@ -151,20 +151,15 @@
 }
 
 .local {
-  display: flex;
+  display: grid;
   justify-content: center;
   background-color: #3f92c8;
-  background-image: url("../../public/imagens/local.png");
-  /* Full height */
-	width: 100%;
-  height: 100vh;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   gap: 1rem;
-  padding: 2rem;
-  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.5);;
+  padding: 2rem 0 2rem 0;
+  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .galeria {
@@ -270,6 +265,12 @@
     display: grid;
     grid-template-columns: 1fr;
   }
+}
+
+.mapResponsive {
+  display: 'flex';
+  width: 100vw;
+  height: 200%;
 }
 
 .passageiros {

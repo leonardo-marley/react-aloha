@@ -455,6 +455,11 @@ export default function Home() {
               fontWeight: 600,
             }}
           >Localização</h2>
+
+          <div className={styles.mapResponsive} >
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3668.792088015336!2d-44.1665214!3d-23.1412737!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9c5c0c13570d3d%3A0x844a7c570339815f!2sCais%20Tur%C3%ADstico%20da%20Vila%20do%20Abra%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1704986552198!5m2!1spt-BR!2sbr" width="100%" height="100%" style={{border:0}} loading="lazy" ></iframe> 
+          </div>
+
         </div>
 
         <div className={styles.galeria} style={{textShadow: '5px 5px 5px #222'}}>
@@ -463,7 +468,7 @@ export default function Home() {
               fontFamily: "'Sarala',sans-serif",
               color: 'var(--white)',
               fontWeight: 600,
-              marginTop: '2rem'
+              marginTop: '10rem'
             }}
           >Galeria</h2>
           <CarousselGaleria />
