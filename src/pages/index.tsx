@@ -313,7 +313,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>AlohaTour | Home</title>
+        <title>AlohaTour</title>
         <meta name="viewport" content="width=device-width,inicial-scale=1.0"/>
         <meta name="discription" content="O melhor conforto com os melhores passeios de barcos e roteiros da Ilha Grande e RJ!"/>
         <link rel="icon" href="/favicon.ico" />
