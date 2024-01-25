@@ -9,6 +9,7 @@ import CarousselGaleria from '../components/CarrousselGaleria'
 import WhatsAppButton from '@component/components/WhatsAppButton'
 import Rodape from '@component/components/Rodape'
 import InformationCard, {InformationCardProps} from '@component/components/InformationCard'
+import Modal from '../components/Modal';
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Box, FormControl, IconButton, InputLabel, MenuItem, Tab, Tabs, Typography } from '@mui/material';
@@ -60,30 +61,62 @@ export default function Home() {
     {
       id: 1,
       title: "Gruta do Acaiá",
-      body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
+      body: "Crianças grátis até 5 anos, acima, valor integral*",
+      paradas: ['Grumixama','Aripeba', 'Lagoa Verde', 'Japariz'],
+      horaSaida: '10:30',
+      horaChegada: '17:30',
       imageURL: "https://images.prismic.io/incriveisexperiencias/3cd6818b-d422-4ecd-9d6f-10a59baeb1b1_197437893_120663160181796_2727319826198232634_n.jpg?auto=compress,format",
-      valor: 120
+      valor: 180
     },
     {
       id: 2,
-      title: "Lagoa Verde",
-      body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
+      title: "Meia Volta",
+      body: "Crianças grátis até 5 anos, acima, valor integral*",
+      paradas: ['Lagoa azul','Lagoa verde', 'Grumixama', 'Japariz','Feiticeira'],
+      horaSaida: '10:30',
+      horaChegada: '16:30',
       imageURL: "https://www.tevejopelomundo.com.br/wp-content/uploads/2020/03/lagoa-verde-Ilha-grande.jpg",
-      valor: 100
+      valor: 140
     },
     {
       id: 3,
       title: "Ilhas Paradisíacas",
-      body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
+      body: "Crianças grátis até 5 anos, acima, valor integral*",
+      paradas: ['Cataguases','Botinas', 'Dentista', 'Piedade','Maguariquessaba'],
+      horaSaida: '10:30',
+      horaChegada: '17:30',
       imageURL: "https://www.essemundoenosso.com.br/wp-content/uploads/2019/06/Ilhas-Paradisiacas-Piedade_Destaque-740x463.jpg.webp",
-      valor: 150
+      valor: 160
     },
     {
       id: 4,
-      title: "Lagoa Azul",
-      body: "Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel Example Bootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap Carousel ExampleBootstrap",
+      title: "Volta Ilha",
+      body: "Crianças grátis até 5 anos, acima, valor integral*",
+      paradas: ['Aventureiro','Meros', 'Paranoica', 'Caxadaço','Maguariquessaba'],
+      horaSaida: '09:30',
+      horaChegada: '17:30',
       imageURL: "https://img.freepik.com/fotos-premium/pesque-na-lagoa-azul-da-ilha-grande-em-angra-dos-reis_63139-2834.jpg?w=2000",
-      valor: 100
+      valor: 240
+    },
+    {
+      id: 5,
+      title: "Lopes Mendes",
+      body: "Crianças grátis até 5 anos, acima, valor integral*",
+      paradas: ['Pouso','nada','nada','nada'],
+      horaSaida: '10:30',
+      horaChegada: '16:30',
+      imageURL: "https://img.freepik.com/fotos-premium/pesque-na-lagoa-azul-da-ilha-grande-em-angra-dos-reis_63139-2834.jpg?w=2000",
+      valor: 50
+    },
+    {
+      id: 6,
+      title: "À Combinar",
+      body: "Crianças grátis até 5 anos, acima, valor integral*",
+      paradas: ['Lagoa azul','Lagoa verde', 'Grumixama', 'Japariz','Feiticeira','Gruta'],
+      horaSaida: '??:??',
+      horaChegada: '??:??',
+      imageURL: "https://img.freepik.com/fotos-premium/pesque-na-lagoa-azul-da-ilha-grande-em-angra-dos-reis_63139-2834.jpg?w=2000",
+      valor: 900
     }
   ]
   let data1: Date = new Date();
@@ -91,9 +124,11 @@ export default function Home() {
   const [isClient,setIsClient] = useState<boolean>();
   const [informacoes,setInformacoes] = useState(cards);
   const [roteiroSelect,setRoteiroSelect] = useState('');
+  const [embarcacaoSelect,setEmbarcacaoSelect] = useState('');
   const [dataAgendamento, setDataAgendamento] = useState<Date>(data1);
   const [telefone, setTelefone] = useState('');
   const [indexAba, setIndexAba] = useState(0);
+  const [passageiros, setPassageiros] = useState(0);
   const {register, handleSubmit} = useForm(); 
   const router = useRouter();
   const encoder = new TextEncoder();
@@ -218,6 +253,10 @@ export default function Home() {
     setRoteiroSelect(event.target.value);
   };
 
+  const handleChangeSelectEmbarcacao = (event: SelectChangeEvent) => {
+    setEmbarcacaoSelect(event.target.value);
+  };
+
   function Formulario() {
     return(
       <>
@@ -253,9 +292,10 @@ export default function Home() {
                     }}
                   >
                     <MenuItem value={'Gruta do Acaiá'}>Gruta do Acaiá</MenuItem>
-                    <MenuItem value={'Lagoa Azul'}>Lagoa Azul</MenuItem>
+                    <MenuItem value={'Volta Ilha'}>Volta Ilha</MenuItem>
                     <MenuItem value={'Ilhas Paradisíacas'}>Ilhas Paradisíacas</MenuItem>
-                    <MenuItem value={'Lagoa Verde'}>Lagoa Verde</MenuItem>
+                    <MenuItem value={'Meia Volta'}>Meia Volta</MenuItem>
+                    <MenuItem value={'Lopes Mendes'}>Lopes Mendes</MenuItem>
                     <MenuItem value={'À Combinar'}>À Combinar</MenuItem>
                   </Select>
                   <span className={styles.obrigatorio}>Campo obrigatório *</span>
@@ -263,10 +303,35 @@ export default function Home() {
                 
               </div>
 
-              <div className={styles.passageiros}>
-                <label htmlFor='passageiros'>Passageiros</label> 
-                <input {...register('passageiros')} name='passageiros' type="number" placeholder="" ></input>
-                <span className={styles.obrigatorio}>Campo obrigatório *</span>
+              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '.5rem'}}>
+                <div className={styles.passageiros}>
+                  <label htmlFor='passageiros'>Passageiros</label> 
+                  <input {...register('passageiros')} name='passageiros' type="number" placeholder="" onChange={(e) => setPassageiros(parseInt(e.target.value, 10))}></input>
+                  <span className={styles.obrigatorio}>Campo obrigatório *</span>
+                </div>
+
+                <div>
+                  <label htmlFor='passageiros'>Embarcação</label> 
+                  <FormControl sx={{ minWidth: 120, width: '100%' }} size="small">
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={embarcacaoSelect}
+                      label="Embarcação"
+                      onChange={handleChangeSelectEmbarcacao}
+                      sx={{
+                        height: '34px',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid var(--color-primary)',
+                      }}
+                    >
+                      <MenuItem value={'CF'} disabled={roteiroSelect == 'Volta Ilha' ? true : false}>CF</MenuItem>
+                      <MenuItem value={'Lancha'} disabled={(roteiroSelect == 'Gruta do Acaiá' || roteiroSelect == 'Lopes Mendes') ? true : false}>Lancha</MenuItem>
+                      <MenuItem value={'Escuna'} disabled={roteiroSelect == 'Lopes Mendes' ? false : true}>Escuna</MenuItem>
+                    </Select>
+                    <span className={styles.obrigatorio}>Campo obrigatório *</span>
+                  </FormControl>
+                </div>
               </div>
 
               <div className={styles.dataPickerContainer}>
@@ -299,12 +364,18 @@ export default function Home() {
             <textarea {...indexAba == 0 ? {...register('observacao')} : {...register('duvida')}} name={indexAba == 0 ? 'observacao' : 'duvida'} rows={4} />
           </div>
 
-          <button className={styles.botaoEnvio} type='submit'>
-            <div className={styles.left}></div>
-              {indexAba == 0 ? 'Agendar' : 'Perguntar'}
-            <div className={styles.right}></div>
-          </button>
+          <div className={styles.agendamentoCarrinho}>
+            <button className={styles.carrinho} type='button'>
+              Simular Valor  
+            </button>
 
+            <button className={styles.botaoEnvio} type='submit'>
+              <div className={styles.left}></div>
+                {indexAba == 0 ? 'Agendar' : 'Perguntar'}
+              <div className={styles.right}></div>
+            </button>
+          </div>
+         
         </form>
       </>
     )

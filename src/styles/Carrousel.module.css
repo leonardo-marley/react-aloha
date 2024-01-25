@@ -4,6 +4,7 @@
   }
   .itemP > img {
     width: 70vw;
+    min-width: 45ch;
     object-fit: cover;
     height: 100%;
     border-radius: 1rem;

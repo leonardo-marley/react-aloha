@@ -5,6 +5,7 @@
     background-size: cover;
     padding: 10rem 0 0;
     max-width: 50ch;
+    min-width: 45ch;
     height: 30rem;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -14,9 +15,9 @@
 }
 
 .cardContent {
-    --padding: 1.5rem;
+    --padding: 1rem;
     padding: var(--padding);
-    font-weight: 600;
+    font-weight: 500;
     background: linear-gradient(
         hsl(0 0% 0% / 0),
         hsl(20 0% 0% / 0.6) 20%,
@@ -94,6 +95,8 @@
 }
 
 .cardBody {
+    display: grid;
+    gap: 0;
     color: rgb(255, 255, 255/0.85);
 }
 
