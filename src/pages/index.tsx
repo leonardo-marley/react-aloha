@@ -403,9 +403,9 @@ export default function Home() {
             <p style={{fontSize: 12, marginTop: '.5rem'}}>No momento não estamos realizando pagamentos online.</p>
           </div>
 
-          <div className={styles.agendamentoCarrinho}>
+          <div className={styles.agendamentoCarrinho} style={indexAba == 0 ? {}: {gridTemplateColumns: '1fr'}}>
             <Modal
-              trigger={<button className={styles.carrinho} type='button'>Valor</button>}
+              trigger={<button className={styles.carrinho} style={indexAba == 0 ? {}: {display: 'none'}} type='button'>Valor</button>}
               titulo={<PointOfSaleIcon />}
               maxWidth='25rem'
               valueClose={modalCarrinho}
