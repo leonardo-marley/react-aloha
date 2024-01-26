@@ -25,6 +25,8 @@ import { format } from 'date-fns';
 import { NotificationContainer , NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -128,7 +130,9 @@ export default function Home() {
   const [dataAgendamento, setDataAgendamento] = useState<Date>(data1);
   const [telefone, setTelefone] = useState('');
   const [indexAba, setIndexAba] = useState(0);
-  const [passageiros, setPassageiros] = useState(0);
+  const [modalCarrinho,setModalCarrinho] = useState<boolean>();
+  const [passageiros, setPassageiros] = useState<number>();
+  const [valorPasseio, setValorPasseio] = useState<number>();
   const {register, handleSubmit} = useForm(); 
   const router = useRouter();
   const encoder = new TextEncoder();
@@ -257,6 +261,40 @@ export default function Home() {
     setEmbarcacaoSelect(event.target.value);
   };
 
+  function calcularValor(passageirosV: number) {
+
+    switch (roteiroSelect) {
+      case 'Lopes Mendes':
+        embarcacaoSelect == 'Escuna' ? 
+          setValorPasseio(passageirosV * 50)
+        :
+          setValorPasseio(passageirosV * 70)
+        break;
+      case 'Meia Volta':
+        embarcacaoSelect == 'CF' ? 
+          setValorPasseio(passageirosV * 140)
+        :
+          setValorPasseio(passageirosV * 180)
+        break;
+      case 'Gruta do Acaiá':
+          setValorPasseio(passageirosV * 180)
+        break;
+      case 'Volta Ilha':
+          setValorPasseio(passageirosV * 240)
+        break;
+      case 'Ilhas Paradisíacas':
+        embarcacaoSelect == 'CF' ? 
+          setValorPasseio(passageirosV * 160)
+        :
+          setValorPasseio(passageirosV * 200)
+        break;
+      case 'À Combinar':
+          setValorPasseio(900)
+        break;
+    }
+    
+  }
+
   function Formulario() {
     return(
       <>
@@ -306,7 +344,7 @@ export default function Home() {
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '.5rem'}}>
                 <div className={styles.passageiros}>
                   <label htmlFor='passageiros'>Passageiros</label> 
-                  <input {...register('passageiros')} name='passageiros' type="number" placeholder="" onChange={(e) => setPassageiros(parseInt(e.target.value, 10))}></input>
+                  <input {...register('passageiros')} name='passageiros' type="number" placeholder="" onChange={(e) => setPassageiros(e.target.valueAsNumber)}></input>
                   <span className={styles.obrigatorio}>Campo obrigatório *</span>
                 </div>
 
@@ -325,9 +363,9 @@ export default function Home() {
                         border: '1px solid var(--color-primary)',
                       }}
                     >
-                      <MenuItem value={'CF'} disabled={roteiroSelect == 'Volta Ilha' ? true : false}>CF</MenuItem>
+                      <MenuItem value={'CF'} disabled={(roteiroSelect == 'Volta Ilha' || roteiroSelect == 'À Combinar') ? true : false}>CF</MenuItem>
                       <MenuItem value={'Lancha'} disabled={(roteiroSelect == 'Gruta do Acaiá' || roteiroSelect == 'Lopes Mendes') ? true : false}>Lancha</MenuItem>
-                      <MenuItem value={'Escuna'} disabled={roteiroSelect == 'Lopes Mendes' ? false : true}>Escuna</MenuItem>
+                      <MenuItem value={'Escuna'} disabled={(roteiroSelect == 'Lopes Mendes') ? false : true}>Escuna</MenuItem>
                     </Select>
                     <span className={styles.obrigatorio}>Campo obrigatório *</span>
                   </FormControl>
@@ -362,12 +400,35 @@ export default function Home() {
           <div className={styles.observacao}>
             <label htmlFor={indexAba == 0 ? "observacao" : "duvida"}>{indexAba == 0 ? 'Observação' : 'Dúvida'}</label>
             <textarea {...indexAba == 0 ? {...register('observacao')} : {...register('duvida')}} name={indexAba == 0 ? 'observacao' : 'duvida'} rows={4} />
+            <p style={{fontSize: 12, marginTop: '.5rem'}}>No momento não estamos realizando pagamentos online.</p>
           </div>
 
           <div className={styles.agendamentoCarrinho}>
-            <button className={styles.carrinho} type='button'>
-              Simular Valor  
-            </button>
+            <Modal
+              trigger={<button className={styles.carrinho} type='button'>Valor</button>}
+              titulo={<PointOfSaleIcon />}
+              maxWidth='25rem'
+              valueClose={modalCarrinho}
+              onOpen={() => passageiros && calcularValor(passageiros)}
+            >
+            <div className={styles.containerModalCarrinho}> 
+              { passageiros && roteiroSelect && embarcacaoSelect ?
+                <div>
+                  <Image 
+                    alt='Logo' src='/../public/imagens/caixa.png' 
+                    width={152} 
+                    height={152} 
+                    className={styles.pagamento} 
+                  />
+                  <p>Seu passeio fica no valor de: <u>R${valorPasseio},00</u></p>
+                </div>
+                :
+                <p>
+                  Preencha as informações necessárias de agendamento para saber o valor à pagar.
+                </p>
+              }
+            </div>
+            </Modal>  
 
             <button className={styles.botaoEnvio} type='submit'>
               <div className={styles.left}></div>

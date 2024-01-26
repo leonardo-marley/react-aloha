@@ -586,3 +586,12 @@
   width: 100%;
 }
 
+.containerModalCarrinho {
+  display: grid;
+  height: 100%;
+  justify-items: center;
+  font-family: 'Sarala',sans-serif;
+  font-weight: 600;
+  gap: 1rem;
+}
+

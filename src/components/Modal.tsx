@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Popup from 'reactjs-popup';
-import styles from '../styles/components/Modal.module.css'
+import styles from '../styles/Modal.module.css'
 
 interface ModalProps{
-  titulo: string,
+  titulo: any,
   trigger: any,
   children?: any,
   contentStyle?: any,

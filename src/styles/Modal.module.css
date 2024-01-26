@@ -1,0 +1,73 @@
+.container {  
+  background-color: rgba(0, 0, 0, 0.3) ;      
+  height: 100vh;
+  width: 100vw;
+  position: absolute;  
+  z-index: 100;
+  left: 0;
+  top: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardAviso{  
+  background-color: var(--white);
+  filter: opacity(1);
+  padding: 1rem;
+  border-radius: 10px;
+  display: grid;  
+}
+
+.menuUsuarioItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  height: 28px;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--background);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
+}
+.menuUsuarioItem > img{
+  width: 1rem;
+  margin-left: 0.5rem;    
+}
+
+.menuUsuarioItem:hover {
+  transform: scale(1.05);
+}
+
+.modalTop{
+  display: grid;
+  grid-auto-flow: column;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modalClose{
+  background-color: transparent;
+  border: none;  
+  outline: none;
+  padding: 0.3rem;
+  border-radius: 50%;
+  line-height: 1rem;  
+  font-size: 2rem;  
+}
+
+.filterBtnSearch {
+  width: 9rem;
+  padding: .5rem;
+  margin: 1rem auto;
+
+  border: none;
+  border-radius: .1rem;
+
+  background-color: var(--color-primary);
+  color: var(--white);
+  transition: .2s;
+}
+
+.filterBtnSearch:hover {
+  background-color: var(--color-primary-dark);
+}
