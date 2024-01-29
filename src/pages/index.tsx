@@ -10,9 +10,9 @@ import WhatsAppButton from '@component/components/WhatsAppButton'
 import Rodape from '@component/components/Rodape'
 import InformationCard, {InformationCardProps} from '@component/components/InformationCard'
 import Modal from '../components/Modal';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
-import { Box, FormControl, IconButton, InputLabel, MenuItem, Tab, Tabs, Typography } from '@mui/material';
+import { Box, FormControl, MenuItem, Tab, Tabs, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useRouter } from 'next/router';
@@ -130,10 +130,9 @@ export default function Home() {
   const [dataAgendamento, setDataAgendamento] = useState<Date>(data1);
   const [telefone, setTelefone] = useState('');
   const [indexAba, setIndexAba] = useState(0);
-  const [modalCarrinho,setModalCarrinho] = useState<boolean>();
-  const [passageiros, setPassageiros] = useState<number>();
   const [valorPasseio, setValorPasseio] = useState<number>();
-  const {register, handleSubmit} = useForm(); 
+  const {register, handleSubmit, setValue, getValues} = useForm(); 
+  const passageirosRef = useRef<HTMLInputElement>(null)
   const router = useRouter();
   const encoder = new TextEncoder();
   const decoder = new TextDecoder('utf-8');
@@ -227,7 +226,7 @@ export default function Home() {
     let obs = data.observacao ? `Obs.:${data.observacao}` : ''
     let textoAgendamento = `Olá, vim pelo site alohatour.com.br.
     Me chamo, ${data.nome}.
-    Gostaria de agendar um passeio para o dia ${format(dataAgendamento,'dd/MM/yyyy')} com o roteiro ${roteiroSelect} para ${data.passageiros} pessoa(s). \nPoderia me ajudar?
+    Gostaria de agendar um passeio para o dia ${format(dataAgendamento,'dd/MM/yyyy')} com o roteiro ${roteiroSelect} para ${data.passageiros} pessoa(s) e utilizando ${embarcacaoSelect} como transporte. \nPoderia me ajudar?
     ${obs}`
     const textoUTF8 = encoder.encode(textoAgendamento);
     const textoDecodificado = decoder.decode(textoUTF8);
@@ -261,7 +260,8 @@ export default function Home() {
     setEmbarcacaoSelect(event.target.value);
   };
 
-  function calcularValor(passageirosV: number) {
+
+  function calcularValor(passageirosV: any ) {
 
     switch (roteiroSelect) {
       case 'Lopes Mendes':
@@ -296,6 +296,13 @@ export default function Home() {
   }
 
   function Formulario() {
+  const [modalCarrinho,setModalCarrinho] = useState<boolean>();
+
+  const handleChangePassageiros = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const novoValor = parseInt(event.target.value, 10);
+    setValue('passageiros', novoValor);
+  };
+
     return(
       <>
         <form className={styles.containerForm} onSubmit={indexAba == 0 ? handleSubmit(agendarPasseio) : handleSubmit(tirarDuvida)}>
@@ -344,7 +351,7 @@ export default function Home() {
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '.5rem'}}>
                 <div className={styles.passageiros}>
                   <label htmlFor='passageiros'>Passageiros</label> 
-                  <input {...register('passageiros')} name='passageiros' type="number" placeholder="" onChange={(e) => setPassageiros(e.target.valueAsNumber)}></input>
+                  <input {...register('passageiros')} name='passageiros' type="number" placeholder="" onChange={(e) => handleChangePassageiros(e)}></input>
                   <span className={styles.obrigatorio}>Campo obrigatório *</span>
                 </div>
 
@@ -409,10 +416,10 @@ export default function Home() {
               titulo={<PointOfSaleIcon />}
               maxWidth='25rem'
               valueClose={modalCarrinho}
-              onOpen={() => passageiros && calcularValor(passageiros)}
+              onOpen={() => calcularValor(getValues('passageiros'))}
             >
             <div className={styles.containerModalCarrinho}> 
-              { passageiros && roteiroSelect && embarcacaoSelect ?
+              { (getValues('passageiros') && roteiroSelect && embarcacaoSelect) ?
                 <div>
                   <Image 
                     alt='Logo' src='/../public/imagens/caixa.png' 
