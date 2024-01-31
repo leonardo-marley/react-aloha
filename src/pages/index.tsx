@@ -117,7 +117,7 @@ export default function Home() {
       paradas: ['Lagoa azul','Lagoa verde', 'Grumixama', 'Japariz','Feiticeira','Gruta'],
       horaSaida: '??:??',
       horaChegada: '??:??',
-      imageURL: "https://img.freepik.com/fotos-premium/pesque-na-lagoa-azul-da-ilha-grande-em-angra-dos-reis_63139-2834.jpg?w=2000",
+      imageURL: "https://drive.usercontent.google.com/download?id=1eVFDj7kCROrfnmWSXRj99UsygJP_eXr6&authuser=0",
       valor: 900
     }
   ]
