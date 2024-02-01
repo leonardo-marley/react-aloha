@@ -117,7 +117,7 @@ export default function Home() {
       paradas: ['Lagoa azul','Lagoa verde', 'Grumixama', 'Japariz','Feiticeira','Gruta'],
       horaSaida: '??:??',
       horaChegada: '??:??',
-      imageURL: "https://drive.usercontent.google.com/download?id=1eVFDj7kCROrfnmWSXRj99UsygJP_eXr6&authuser=0",
+      imageURL: "https://drive.google.com/thumbnail?id=0B6wwyazyzml-OGQ3VUo0Z2thdmc&sz=w1000",
       valor: 900
     }
   ]
@@ -596,7 +596,7 @@ export default function Home() {
           >Localização</h2>
 
           <div className={styles.mapResponsive} >
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3668.792088015336!2d-44.1665214!3d-23.1412737!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9c5c0c13570d3d%3A0x844a7c570339815f!2sCais%20Tur%C3%ADstico%20da%20Vila%20do%20Abra%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1704986552198!5m2!1spt-BR!2sbr" width="100%" height="100%" style={{border:0, borderRadius: '1rem', boxShadow: '5px 5px 5px rgba(0, 0, 0, 0.25)'}} loading="lazy" ></iframe> 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d917.2000548901033!2d-44.16755663051408!3d-23.140976565492355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9c5dd74bb24bfd%3A0xa87d6359ff9a3404!2sNativos%20Turismo%20Ilha%20Grande!5e0!3m2!1spt-BR!2sbr!4v1706792986585!5m2!1spt-BR!2sbr" width="100%" height="100%" style={{border:0, borderRadius: '1rem', boxShadow: '5px 5px 5px rgba(0, 0, 0, 0.25)'}} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
 
         </div>
