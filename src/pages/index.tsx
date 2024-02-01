@@ -117,7 +117,7 @@ export default function Home() {
       paradas: ['Lagoa azul','Lagoa verde', 'Grumixama', 'Japariz','Feiticeira','Gruta'],
       horaSaida: '??:??',
       horaChegada: '??:??',
-      imageURL: "https://drive.google.com/thumbnail?id=0B6wwyazyzml-OGQ3VUo0Z2thdmc&sz=w1000",
+      imageURL: "https://drive.google.com/thumbnail?id=1eVFDj7kCROrfnmWSXRj99UsygJP_eXr6&sz=w1000",
       valor: 900
     }
   ]
