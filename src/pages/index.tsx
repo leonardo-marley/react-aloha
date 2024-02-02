@@ -87,7 +87,7 @@ export default function Home() {
       paradas: ['Cataguases','Botinas', 'Dentista', 'Piedade','Maguariquessaba'],
       horaSaida: '10:30',
       horaChegada: '17:30',
-      imageURL: "https://www.essemundoenosso.com.br/wp-content/uploads/2019/06/Ilhas-Paradisiacas-Piedade_Destaque-740x463.jpg.webp",
+      imageURL: "https://drive.google.com/thumbnail?id=126A_snHE-sYt4T59r8NvX9eZtnTE5faY&sz=w1000",
       valor: 160
     },
     {
