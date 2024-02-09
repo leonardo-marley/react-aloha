@@ -107,7 +107,7 @@ export default function Home() {
       paradas: ['Pouso','nada','nada','nada'],
       horaSaida: '10:30',
       horaChegada: '16:30',
-      imageURL: "https://img.freepik.com/fotos-premium/pesque-na-lagoa-azul-da-ilha-grande-em-angra-dos-reis_63139-2834.jpg?w=2000",
+      imageURL: "https://ogimg.infoglobo.com.br/in/7656024-574-9d4/FT1086A/2013022239576.jpg",
       valor: 50
     },
     {
