@@ -6,7 +6,7 @@ const nextConfig = {
     remotePaterns: [
       {
         protocol: 'https',
-        hostname: 'https://drive.google.com'
+        hostname: 'drive.google.com'
       }
     ]
   },
