@@ -22,7 +22,7 @@ export default function InformationCard(props: InformationCardCompProps) {
   return (
         <> 
             {
-                <div className={styles.card} style={{backgroundImage: `url(${props.dados?.imageURL})`}} onClick={() => console.log(props.dados?.title, 'Título')}>
+                <div className={styles.card} style={{backgroundImage: `url(${props.dados?.imageURL})`}} key={props.dados?.id}>
                     <div className={styles.cardContent}>
                     <h2 className={styles.cardTitle}>{props.dados?.title}</h2>
                     <div className={styles.cardBody}>
@@ -43,7 +43,7 @@ export default function InformationCard(props: InformationCardCompProps) {
                         <div style={{display: 'grid', gridTemplateColumns: 'auto auto auto', gap: '0'}}>
                             {props.dados?.paradas &&
                                 props.dados?.paradas.map((item: string, k: number) => (
-                                    <u><p style={item == 'nada' ? {visibility: 'hidden'} : {}} key={k}>{item} {item == 'Maguariquessaba' ? <RestaurantIcon fontSize="small"/> : item == 'Japariz' ? <RestaurantIcon fontSize="small"/> : ''}</p></u>
+                                    <u key={k}><p style={item == 'nada' ? {visibility: 'hidden'} : {}} key={k}>{item} {item == 'Maguariquessaba' ? <RestaurantIcon fontSize="small"/> : item == 'Japariz' ? <RestaurantIcon fontSize="small"/> : ''}</p></u>
                                 ))
                             }
                         </div>

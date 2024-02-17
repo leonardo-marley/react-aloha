@@ -21,7 +21,7 @@ const Modal = (props : ModalProps) => {
   },[props.valueClose])
 
   useEffect(() => {
-    setOpen(false)
+    setOpen(o => !o)
   }, [open])
   
   return(

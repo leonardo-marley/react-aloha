@@ -422,7 +422,7 @@ export default function Home() {
               { (getValues('passageiros') && roteiroSelect && embarcacaoSelect) ?
                 <div>
                   <Image 
-                    alt='Logo' src='/../public/imagens/caixa.png' 
+                    alt='Logo' src='https://drive.google.com/thumbnail?id=1NrxmtuprsqaJjfxgq0zUiznFbc9hoets&sz=w1000' 
                     width={152} 
                     height={152} 
                     className={styles.pagamento} 
@@ -468,7 +468,7 @@ export default function Home() {
           <Image 
             className={styles.logo}
             alt='Logo' 
-            src='/../public/imagens/garrafa3.png' 
+            src='https://drive.google.com/thumbnail?id=19jxPsxSN36nfB-t_nk7ymhlszMlrAepX&sz=w1000' 
             width={130} 
             height={130}
             style={{
@@ -544,7 +544,7 @@ export default function Home() {
         <section className={styles.sobre} id='sobreSection'>
           <div className={styles.sobreT} style={{textShadow: '5px 5px 5px #222'}}>
             <Image 
-              alt='Logo' src='/../public/imagens/mergulho.png' 
+              alt='Logo' src='https://drive.google.com/thumbnail?id=1yjfcmH4qfD9HymAF5tijga_qo4jTCqEV&sz=w1000' 
               width={152} 
               height={152} 
               className={styles.mergulhador} 
@@ -577,7 +577,7 @@ export default function Home() {
             justifyContent: 'flex-end'
           }}>
             <Image 
-              alt='Logo' src='/../public/imagens/mergulho2.png' 
+              alt='Logo' src='https://drive.google.com/thumbnail?id=17DGzF90iI8-y74XtZG8oiK8vgKe5p2fJ&sz=w1000' 
               width={152} 
               height={152} 
             />
